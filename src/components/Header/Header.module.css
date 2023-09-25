@@ -1,0 +1,38 @@
+.header {
+    margin: 15px;
+    background-color: #6741d9;
+    display: grid;
+    grid-template-columns: 1fr 1fr  1fr;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.logo h2{
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 30px;
+}
+.logo span{
+    font-size: 30px;
+}
+.serch{
+    /*font-size: 20px;*/
+    height: 25px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    background-color: #7950f2;
+    color: #adb5bd;
+}
+.logoImage {
+
+}
