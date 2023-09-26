@@ -4,6 +4,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr  1fr;
     align-items: center;
+    color: white;
+    border-radius: 10px;
 }
 
 .logo {
@@ -11,6 +13,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-left: 25px;
+    padding: 10px 0;
 
 }
 .logo h2{
@@ -22,7 +26,7 @@
 .logo span{
     font-size: 30px;
 }
-.serch{
+.search{
     /*font-size: 20px;*/
     height: 25px;
     width: 300px;
@@ -33,6 +37,15 @@
     background-color: #7950f2;
     color: #adb5bd;
 }
+.search::placeholder{
+    color: #AAA3E8 ;
+    font-weight: 600;
+}
 .logoImage {
-
+  font-size: 30px;
+    margin-right: 10px;
+}
+.moviesNum{
+    text-align: right;
+    margin-right: 25px;
 }

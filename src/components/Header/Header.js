@@ -5,10 +5,10 @@ function Header() {
         <header className={s.header}>
             <div className={s.logo} >
                 <span className={s.logoImage}>🍿</span>
-                <h2>UsePopcorn</h2>
+                <h2>usePopcorn</h2>
             </div>
-            <div><input type='text' className={s.serch}/></div>
-            <p>Found 3 results</p>
+            <div><input type='text' className={s.search} placeholder='Search movies...' /></div>
+            <p className={s.moviesNum}>Found 3 results</p>
         </header>
     );
 }

@@ -1,0 +1,22 @@
+.listContainer{
+    min-height: 70vh;
+    background-color: #24282C ;
+    border-radius: 10px;
+}
+.buttonContainer{
+    text-align: right;
+}
+.buttonContainer button{
+    margin: 10px;
+    background-color: #1A1E21;
+    color: white;
+
+    font-weight: bold;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
