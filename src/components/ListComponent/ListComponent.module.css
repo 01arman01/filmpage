@@ -2,12 +2,14 @@
     min-height: 70vh;
     background-color: #24282C ;
     border-radius: 10px;
+    margin: 0;
 }
 .buttonContainer{
     text-align: right;
+    margin: 0;
 }
 .buttonContainer button{
-    margin: 10px;
+    margin: 0 5px  ;
     background-color: #1A1E21;
     color: white;
 

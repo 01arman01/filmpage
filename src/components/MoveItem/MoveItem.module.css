@@ -1,0 +1,26 @@
+.moveItem {
+  margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 5px;
+     border-bottom: 1px solid #575151;
+}
+
+.imgContainer {
+
+}
+
+.moveDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+}
+.moveDescription>h3{
+  margin: 0;
+}
+
+.image {
+    width: 50px;
+}
