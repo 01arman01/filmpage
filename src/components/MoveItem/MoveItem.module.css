@@ -1,9 +1,11 @@
 .moveItem {
-  margin-top: 0;
+    padding: 15px;
+    margin-top: 0;
     display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 5px;
-     border-bottom: 1px solid #575151;
+    grid-template-columns: 1fr 7fr;
+    grid-gap: 0;
+
+    border-bottom: 1px solid #575151;
 }
 
 .imgContainer {
@@ -11,16 +13,19 @@
 }
 
 .moveDescription {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 
 }
-.moveDescription>h3{
-  margin: 0;
+
+.moveDescription > h3 {
+    margin: 0;
 }
 
 .image {
     width: 50px;
+    /*margin-left: 20px;*/
 }
