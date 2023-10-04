@@ -4,28 +4,44 @@ import ListComponent from "./components/ListComponent/ListComponent";
 import MoveItem from "./components/MoveItem/MoveItem";
 import WatchedMoveItem from "./components/WatchedMoveItem/WatchedMoveItem";
 import WatchedMovisStatistics from "./components/WatchedMovisStatistics/WatchedMovesStatistics";
+import {useState} from "react";
 
-function App({tempMovieData,tempWatchedData}) {
-    console.log(tempWatchedData)
+function App({tempMovieData, tempWatchedData}) {
+    const [isOpenMoves, setIsOpenMoves] = useState(true)
+    const [isOpenMovieUser, setIsOpenMovieUser] = useState(true)
+
+    const onchangeMoves = () => {
+        setIsOpenMoves(!isOpenMoves)
+    }
+    const onchangeUserMoveList = () => {
+        setIsOpenMovieUser(!isOpenMovieUser)
+    }
+
     return (
         <div className="App">
             <Header/>
             <main>
 
-                <ListComponent>
+                <ListComponent
+                    status={isOpenMoves}
+                    onChange={onchangeMoves}
+                >
                     {
-                        tempMovieData.map(item=>{
-                              return <MoveItem key={item.id} item={item}/>
+                        tempMovieData.map(item => {
+                            return <MoveItem key={item.id} item={item}/>
                         })
                     }
                 </ListComponent>
-                <ListComponent  bgc='#293134'>
+                <ListComponent
+                    onChange={onchangeUserMoveList}
+                    status={isOpenMovieUser}
+                    bgc='#293134'>
                     <WatchedMovisStatistics
                         tempWatchedData={tempWatchedData}
                     />
                     {
-                        tempWatchedData.map(item=>{
-                            return<WatchedMoveItem
+                        tempWatchedData.map(item => {
+                            return <WatchedMoveItem
                                 key={item.id}
                                 item={item}
                             />
