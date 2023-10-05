@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './ListComponent.module.css'
-function ListComponent({bgc,status,onChange,children}) {
+function ListComponent({bgc,children}) {
+    const [isOpen,setIsOpen] = useState(true)
+
     return (
         <div className={s.listContainer}>
-            <div style={{background:bgc?bgc:'inherit'}} className={s.buttonContainer} onClick={onChange}> <button>{status?'-':'+'}</button></div>
-                 {status && <div>{children}</div>}
+            <div style={{background:bgc?bgc:'inherit'}} className={s.buttonContainer} onClick={()=>setIsOpen(!isOpen)}> <button>{isOpen?'-':'+'}</button></div>
+                 {isOpen && <div>{children}</div>}
             </div>
-
     );
 }
 
