@@ -5,6 +5,15 @@ import './index.css';
 // import  {tempMovieData,tempWatchedData} from "./data";
 import StarRating from "./components/StarRating/StarRating";
 
+const  test = ()=>{
+        return(
+            <div>
+                    <StarRating color='blue'/>
+            </div>
+        )
+}
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
 //     <App
@@ -14,12 +23,22 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // );
 root.render(
     <>
-        <StarRating maxRating={5}/>
-        <StarRating maxRating={10}/>
-        <StarRating />
+        <StarRating maxRating={5}
+                    size={60}
+                    color={'#F4AA0A'}
+        />
+        <StarRating maxRating={10}
+                    color={'red'}
+                    defaultRating={2}
+        />
+        <StarRating
+            maxRating={5}
+            messages={['Terrible', 'Bad', 'Okay', 'Good', 'Amazing']}
+        />
 
     </>
 );
+
 
 
 

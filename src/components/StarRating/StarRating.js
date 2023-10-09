@@ -1,43 +1,72 @@
 import React, {useState} from 'react';
 import s from './StarRating.module.css'
 
-function StarRating({maxRating=10}) {
-    const [rating,setRating]=useState(1)
-    const [hover,setHover] = useState(0)
+function StarRating({
+                        maxRating = 10,
+                        color = 'yellow',
+                        size = 48,
+                        messages = [],
+                        defaultRating = 1,
 
-    const onHover = (starNum)=>{
+                    }) {
+    const [rating, setRating] = useState(defaultRating)
+    const [hover, setHover] = useState(0)
+
+
+    const onHover = (starNum) => {
         setHover(starNum)
     }
-    const onHoverClose = ()=>{
+    const onHoverClose = () => {
         setHover(0)
     }
-   let num = 0
-   if(hover > 0){
-      num = hover
-   }else {
-       num = rating
-   }
+    let num = 0
+
+
+    if (hover > 0) {
+        num = hover
+    } else {
+        num = rating
+    }
+
+    const styleContainer = {
+        color,
+        // fontSize:'40px'
+    }
+    const styleStarItem = {
+        fontSize: `${size}px`
+    }
+
+    const textStyle = {
+        fontSize: `${size / 1.5}px`,
+        margin: 0,
+        lineHeight: 1,
+        padding: 0
+    }
+    // const
     return (
-        <div className={s.starRating}>
+        <div className={s.starRating} style={styleContainer}>
             <div className={s.starContainer}>
                 {
-                    Array.from({length:maxRating},(_,i)=>{
-                        return <span className={s.starItem}
-                                     onClick={()=>setRating(i+1)}
-                                     onMouseEnter={()=>{onHover(i+1)}}
-                                     onMouseLeave={()=>onHoverClose()}
+                    Array.from({length: maxRating}, (_, i) => {
+                        return <span className={s.starItem} style={styleStarItem}
+                                     onClick={() => setRating(i + 1)}
+                                     onMouseEnter={() => {
+                                         onHover(i + 1)
+                                     }}
+                                     onMouseLeave={() => onHoverClose()}
                         >
-                            {(num > i)?'★':'☆'}
+                            {(num > i) ? '★' : '☆'}
                         </span>
                     })
                 }
             </div>
-            <p>
-                {num || ''}
-
+            <p style={textStyle}>
+                {messages.length === maxRating ? messages[num - 1] : num || ''}
             </p>
         </div>
     );
 }
 
 export default StarRating;
+
+

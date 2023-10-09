@@ -10,6 +10,8 @@ import NumResults from "./components/Header/NumResults";
 
 function App({tempMovieData, tempWatchedData}) {
 
+
+
     return (
         <div className="App">
             <Header>
@@ -18,7 +20,6 @@ function App({tempMovieData, tempWatchedData}) {
                 <NumResults numListMoves={tempMovieData.length}/>
             </Header>
             <main>
-
                 <ListComponent
 
                 >
