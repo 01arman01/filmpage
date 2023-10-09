@@ -1,0 +1,26 @@
+.starRating{
+ color: white;
+ display: flex;
+ align-items: center;
+ gap: 16px;
+ 
+}
+.starContainer{
+ display: flex;
+ gap: 2px;
+}
+
+.starItem{
+ color: yellow;
+ font-weight: bold;
+ font-size: 30px;
+ cursor: pointer;
+}
+
+.textStyle {
+ line-height: 1;
+ margin: 0;
+}
+.test{
+ /*background-color: orange;*/
+}

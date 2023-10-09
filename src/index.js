@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 // import  {tempMovieData,tempWatchedData} from "./data";
-import StarRating from "./components/Starating/StarRating";
+import StarRating from "./components/StarRating/StarRating";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -13,7 +13,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //     />
 // );
 root.render(
-    <StarRating />
+    <>
+        <StarRating maxRating={5}/>
+        <StarRating maxRating={10}/>
+        <StarRating />
+
+    </>
 );
 
 
