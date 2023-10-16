@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 // import  {tempMovieData,tempWatchedData} from "./data";
 import StarRating from "./components/StarRating/StarRating";
 
-const  test = ()=>{
-        return(
-            <div>
-                    <StarRating color='blue'/>
-            </div>
-        )
+const Test = () => {
+    const [moveRating,setMoveRating] = useState(0)
+    return (
+        <div style={{color:"white"}}>
+            <StarRating color='blue' maxRating={10} onSetRating={setMoveRating}/>
+            <p>This movies was rated  {moveRating} stars</p>
+
+        </div>
+    )
 }
 
 
@@ -35,6 +38,7 @@ root.render(
             maxRating={5}
             messages={['Terrible', 'Bad', 'Okay', 'Good', 'Amazing']}
         />
+        <Test/>
 
     </>
 );

@@ -1,17 +1,33 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types'
 import s from './StarRating.module.css'
 
+
+
+StarRating.propTypes = {
+    maxRating:PropTypes.number,
+    size:PropTypes.number,
+    color: PropTypes.string,
+    defaultRating:PropTypes.number,
+    messages:PropTypes.array
+}
 function StarRating({
                         maxRating = 10,
                         color = 'yellow',
                         size = 48,
                         messages = [],
                         defaultRating = 1,
+                        onSetRating,
 
                     }) {
     const [rating, setRating] = useState(defaultRating)
     const [hover, setHover] = useState(0)
 
+
+    const handleRating = (rating)=>{
+        setRating(rating)
+        onSetRating(rating)
+    }
 
     const onHover = (starNum) => {
         setHover(starNum)
@@ -49,7 +65,7 @@ function StarRating({
                 {
                     Array.from({length: maxRating}, (_, i) => {
                         return <span className={s.starItem} style={styleStarItem}
-                                     onClick={() => setRating(i + 1)}
+                                     onClick={() => handleRating(i + 1)}
                                      onMouseEnter={() => {
                                          onHover(i + 1)
                                      }}
