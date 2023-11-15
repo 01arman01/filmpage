@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './MoveItem.module.css'
 function MoveItem({item}) {
-    // console.log(item.Title)
     return (
         <div className={s.moveItem}>
             <div className={s.imgContainer}>
@@ -14,5 +13,4 @@ function MoveItem({item}) {
         </div>
     );
 }
-
 export default MoveItem;

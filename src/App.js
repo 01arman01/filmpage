@@ -7,10 +7,20 @@ import WatchedMovisStatistics from "./components/WatchedMovisStatistics/WatchedM
 import Logo from "./components/Header/Logo";
 import Search from "./components/Header/Saerch";
 import NumResults from "./components/Header/NumResults";
+import {useEffect, useState} from "react";
 
-function App({tempMovieData, tempWatchedData}) {
+const key = '3fb280c7'
 
+function App({tempWatchedData}) {
+    const [tempMovieData, setTempMovieData] = useState([])
 
+    useEffect(() => {
+        fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=interstellar`)
+            .then(res => res.json())
+            .then(data => setTempMovieData(data.Search))
+    },[])
+
+    // fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=interstellar`).then(res=>res.json()).then(data=> setTempMovieData(data.Search))
 
     return (
         <div className="App">
@@ -20,12 +30,10 @@ function App({tempMovieData, tempWatchedData}) {
                 <NumResults numListMoves={tempMovieData.length}/>
             </Header>
             <main>
-                <ListComponent
-
-                >
+                <ListComponent>
                     {
                         tempMovieData.map(item => {
-                            return <MoveItem key={item.id} item={item}/>
+                            return <MoveItem key={item.imdbID} item={item}/>
                         })
                     }
                 </ListComponent>
