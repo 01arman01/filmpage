@@ -8,17 +8,43 @@ import Logo from "./components/Header/Logo";
 import Search from "./components/Header/Saerch";
 import NumResults from "./components/Header/NumResults";
 import {useEffect, useState} from "react";
+import Loader from "./components/Loader/Loader";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 const key = '3fb280c7'
+// const query = 'interstellar'
+const query = 'oiurygt;iw'
 
 function App({tempWatchedData}) {
     const [tempMovieData, setTempMovieData] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [error,setError] = useState('')
+    useEffect(
+        function () {
+             async function fetchMovies() {
+                 try {
+                     setIsLoaded(true)
+                     const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=${query}`)
+                     if (!res.ok) {
+                         throw new Error('Something went wrong with fetching  movies')
+                     }
+                     const data = await res.json()
+                     if(data.Response === 'False'){
+                        throw  new Error('Move not found')
+                     }
 
-    useEffect(() => {
-        fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=interstellar`)
-            .then(res => res.json())
-            .then(data => setTempMovieData(data.Search))
-    },[])
+                     setTempMovieData(data.Search)
+                     console.log(data)
+                     // setIsLoaded(false)
+                 } catch (err) {
+                     console.error(err)
+                     setError(err.message)
+                 } finally {
+                     setIsLoaded(false)
+                 }
+             }
+            fetchMovies()
+             },[])
 
     // fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=interstellar`).then(res=>res.json()).then(data=> setTempMovieData(data.Search))
 
@@ -31,11 +57,21 @@ function App({tempWatchedData}) {
             </Header>
             <main>
                 <ListComponent>
+                   {/* {isLoaded? <Loader/> : <div>*/}
+                   {/*    {*/}
+                   {/*        tempMovieData.map(item => {*/}
+                   {/*            return <MoveItem key={item.imdbID} item={item}/>*/}
+                   {/*        })*/}
+                   {/*    }*/}
+                   {/*</div>}*/}
+
+                    {isLoaded && <Loader />}
+                    {!isLoaded && !error &&  tempMovieData.map(item => {
+                               return <MoveItem key={item.imdbID} item={item}/> })}
                     {
-                        tempMovieData.map(item => {
-                            return <MoveItem key={item.imdbID} item={item}/>
-                        })
+                        error && <ErrorMessage message={error}  />
                     }
+
                 </ListComponent>
                 <ListComponent
                     bgc='#293134'>
