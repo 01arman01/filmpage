@@ -1,0 +1,21 @@
+.WatchedMovesStatisticsContainetr {
+    color: white;
+    margin: 0 0 10px 0;
+    padding: 0 115px 15px 15px;
+    /*border-bottom: 1px solid #575151;*/
+    background-color: #293134;
+    border-radius: 15px;
+    /*margin-bottom: 10px;*/
+}
+h2 {
+    padding: 0;
+    margin: 0 auto 10px 30px ;
+
+}
+.descriptionContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 30px;
+}
+
+

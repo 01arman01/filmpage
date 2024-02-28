@@ -1,0 +1,37 @@
+.watchMoviesContainer {
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    border-bottom: 1px solid #575151;
+    padding: 10px;
+}
+
+.watchMoviesImageContainer {
+    margin: 0;
+    padding: 0;
+}
+
+.image {
+    width: 50px;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.descriptionTitle {
+    margin-left: 0;
+    padding: 0;
+}
+
+.movieInformation {
+   display: flex;
+   justify-content: flex-start;
+   margin-top: 10px;
+
+}
+
+.movieInformationItem {
+  margin: 0 60px 0 0;
+}

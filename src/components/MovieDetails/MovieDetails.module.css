@@ -1,0 +1,98 @@
+.arrow_left {
+    background-color: #c7c0c0;
+    color: #000000;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-top: -100px;
+    /*margin-left: 5px;*/
+}
+
+.buttonContainer {
+    background-color: rgb(41, 49, 52);
+
+}
+
+.header {
+    display: flex;
+    background-color: rgb(41, 49, 52);
+   padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+.movieInfo {
+
+    width: 58%;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*gap:0;*/
+    /*align-content: center;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    margin-left: 4%;
+    line-height: normal;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+.movieInfo>p{
+    padding: 0;
+    margin: 12px auto 0 auto;
+}
+
+.move_poster {
+    width: 22%;
+    margin-bottom:-5px;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.move_poster > img {
+    width: 100%;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.description{
+    width: 80%;
+    margin: 20px auto 0 auto;
+    font-family: 'Sevillana', cursive;
+
+}
+.starRatingComponent{
+
+    padding: 20px  0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+}
+.buttonAdd{
+    width:10em;
+    margin-top: 10px;
+    cursor: pointer;
+    border:none;
+    padding: 10px 20px;
+    background-color: #efe205;
+    border-radius: 5px;
+}
+
+.buttonAdd:hover{
+    background-color: #eed157;
+}
+.buttonAdd:active{
+    background-color: #a6891d;
+}
+
