@@ -11,18 +11,25 @@ function MovieDetails({
                       }) {
     const [movie, setMovie] = useState({})
     const [newUserRating, setNewUserRating] = useState(undefined)
-    const [addWatchidStatus, setAddWatchidStatus] = useState(false)
-    const [watcheditem,setWatcheditem] =useState([])
-    useEffect(() => {
+    // const [addWatchidStatus, setAddWatchidStatus] = useState(false)
+    // const [watcheditem,setWatcheditem] =useState([])
 
-        setWatcheditem ( watched.filter(item => item.imdbID === selectedId))
-          if(watcheditem.length > 0) {
-            setAddWatchidStatus(false)
-        } else {
-            setAddWatchidStatus(true)
-        }
-    }, [selectedId]);
-    console.log(addWatchidStatus)
+
+
+    // useEffect(() => {
+    //
+    //     setWatcheditem ( watched.filter(item => item.imdbID === selectedId))
+    //       if(watcheditem.length > 0) {
+    //         setAddWatchidStatus(false)
+    //     } else {
+    //         setAddWatchidStatus(true)
+    //     }
+    // }, [selectedId]);
+    // console.log(addWatchidStatus)
+
+    const watchedStatus = watched.map(item=>item.imdbID).includes(selectedId)
+    const watchedUserRating = watched.find(item=>item.imdbID ===selectedId )?.userRating
+
     // console.log(addWatchidStatus)
     const {
         Title: title,
@@ -37,6 +44,8 @@ function MovieDetails({
         Genre: genre,
     } = movie
     console.table({title, year, poster, runtime, imdbRating, plot, released, actors, director, genre})
+
+
     useEffect(() => {
         async function getMovieDetails() {
             const res = await fetch(`https://www.omdbapi.com/?apikey=${key}&i=${selectedId}`)
@@ -52,8 +61,8 @@ function MovieDetails({
         setNewUserRating(undefined)
     }, [movie])
 
-    console.log('watcheditem')
-    console.log(watcheditem)
+    // console.log('watcheditem')
+    // console.log(watcheditem)
     const onAddMovie = () => {
         onAddWatchedMovie({
             imdbID: selectedId,
@@ -86,7 +95,7 @@ function MovieDetails({
             </div>
             <div className={s.description}>
                 <div className={s.starRatingComponent}>
-                    {addWatchidStatus ? <>
+                    {!watchedStatus ? <>
                         <StarRating
                             size={44}
                             maxRating={10}
@@ -97,13 +106,7 @@ function MovieDetails({
                             <button className={s.buttonAdd} onClick={onAddMovie}>add Movie</button>
                         </div>}
                     </>:<>
-                        <StarRating
-                            size={44}
-                            maxRating={10}
-                            defaultRating={watcheditem.userRating}
-                            onSetRating={()=>{}}
-                            ratingStatus={false}
-                        />
+                        <p>You rated with movie {watchedUserRating} </p>
 
                     </>}
                 </div>
