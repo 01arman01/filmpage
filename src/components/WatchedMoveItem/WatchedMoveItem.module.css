@@ -1,6 +1,6 @@
 .watchMoviesContainer {
     display: grid;
-    grid-template-columns: 1fr 7fr;
+    grid-template-columns: 1fr 4fr 1fr;
     border-bottom: 1px solid #575151;
     padding: 10px;
 }
@@ -34,4 +34,20 @@
 
 .movieInformationItem {
   margin: 0 60px 0 0;
+}
+.deleteElement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.deleteElement>button{
+    padding:7px 14px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight:bold ;
+    color: wheat;
+    background-color: #ad1515;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

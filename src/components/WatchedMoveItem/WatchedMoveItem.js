@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './WatchedMoveItem.module.css'
 
-function WatchedMoveItem({item}) {
+function WatchedMoveItem({item,onDeletteMovie}) {
     return (
         <div className={s.watchMoviesContainer}>
             <div className={s.watchMoviesImageContainer}>
@@ -14,6 +14,10 @@ function WatchedMoveItem({item}) {
                     <p className={s.movieInformationItem}>🌟{item.userRating}</p>
                     <p className={s.movieInformationItem}>⏲{item.runtime}</p>
                 </div>
+
+            </div>
+            <div className={s.deleteElement}>
+                <button onClick={() => onDeletteMovie(item.imdbID)}>X</button>
             </div>
         </div>
     );

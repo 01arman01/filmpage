@@ -36,6 +36,12 @@ function App() {
         setWatched( watched=>[...watched, movie])
     }
 
+    const handleDeletteWatchedMovie = (id)=>{
+        setWatched(moves=>{
+            return moves.filter(item=>item.imdbID !== id)
+        })
+    }
+
 
     useEffect(
         function () {
@@ -123,6 +129,7 @@ function App() {
                                     return <WatchedMoveItem
                                         key={item.id}
                                         item={item}
+                                        onDeletteMovie={handleDeletteWatchedMovie}
                                     />
                                 })
                             }
