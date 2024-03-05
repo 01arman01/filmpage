@@ -13,8 +13,7 @@ import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 
 const key = '3fb280c7'
-// const query = 'interstellar'
-// const query = 'interstellar'
+
 
 function App() {
     const [tempMovieData, setTempMovieData] = useState([])
@@ -33,25 +32,28 @@ function App() {
     }
 
     const handleAddWadchedMovie = (movie) => {
-        setWatched( watched=>[...watched, movie])
+        setWatched(watched => [...watched, movie])
     }
 
-    const handleDeletteWatchedMovie = (id)=>{
-        setWatched(moves=>{
-            return moves.filter(item=>item.imdbID !== id)
+    const handleDeletteWatchedMovie = (id) => {
+        setWatched(moves => {
+            return moves.filter(item => item.imdbID !== id)
         })
     }
 
 
     useEffect(
         function () {
+            const controller = new AbortController();
+
+
             async function fetchMovies() {
-                console.log(query)
+
                 try {
                     setIsLoaded(true)
                     setError('')
 
-                    const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=${query}`)
+                    const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=${query}`, {signal: controller.signal})
                     if (!res.ok) {
                         throw new Error('Something went wrong with fetching  movies')
                     }
@@ -60,11 +62,14 @@ function App() {
                         throw new Error('Move not found')
                     }
                     setTempMovieData(data.Search)
-                    console.log(data.Search)
+                    setError("")
                     // setIsLoaded(false)
                 } catch (err) {
                     console.error(err)
-                    setError(err.message)
+                    if (err.name !== "AbortError") {
+                        setError(err.message)
+
+                    }
                 } finally {
 
                     setIsLoaded(false)
@@ -76,11 +81,28 @@ function App() {
                 setTempMovieData([])
                 return;
             }
-
+            handleCloseMove()
             fetchMovies()
+            return function () {
+                controller.abort()
+            }
         }, [query]
     )
-    // fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${key}&s=interstellar`).then(res=>res.json()).then(data=> setTempMovieData(data.Search))
+
+    useEffect(function () {
+        function callBack(e) {
+            if (e.code === "Escape") {
+                handleCloseMove()
+            }
+        }
+
+        document.addEventListener("keydown", callBack)
+
+        return function () {
+            document.removeEventListener('keydown', callBack)
+        }
+    }, [])
+
 
     return (
         <div className="App">
@@ -91,13 +113,7 @@ function App() {
             </Header>
             <main>
                 <ListComponent>
-                    {/* {isLoaded? <Loader/> : <div>*/}
-                    {/*    {*/}
-                    {/*        tempMovieData.map(item => {*/}
-                    {/*            return <MoveItem key={item.imdbID} item={item}/>*/}
-                    {/*        })*/}
-                    {/*    }*/}
-                    {/*</div>}*/}
+
 
                     {isLoaded && <Loader/>}
                     {!isLoaded && !error && tempMovieData.map(item => {

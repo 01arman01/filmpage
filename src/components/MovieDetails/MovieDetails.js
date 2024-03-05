@@ -35,7 +35,6 @@ function MovieDetails({
             const data = await res.json()
             setMovie(data)
         }
-
         getMovieDetails()
 
     }, [selectedId]);
@@ -43,6 +42,14 @@ function MovieDetails({
     useEffect(() => {
         setNewUserRating(undefined)
     }, [movie])
+
+    useEffect(() => {
+        if(!title) return
+        document.title = `Movie | ${title}`
+        return function (){
+            document.title = 'Film Page'
+        }
+    }, [title]);
 
     const onAddMovie = () => {
         onAddWatchedMovie({
@@ -88,7 +95,6 @@ function MovieDetails({
                         </div>}
                     </>:<>
                         <p>You rated with movie {watchedUserRating} 🌟</p>
-
                     </>}
                 </div>
 
@@ -96,7 +102,6 @@ function MovieDetails({
                 <p> Starring {actors}</p>
                 <p>Directed by {director}</p>
             </div>
-            {/*<p> {selectedId} </p>*/}
         </div>
     );
 }
