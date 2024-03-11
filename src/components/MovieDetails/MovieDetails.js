@@ -62,6 +62,9 @@ function MovieDetails({
             userRating: newUserRating,
         })
         onCloseSelectedMove()
+
+
+
     }
     return (
         <div>

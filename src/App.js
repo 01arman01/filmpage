@@ -17,13 +17,18 @@ const key = '3fb280c7'
 
 function App() {
     const [tempMovieData, setTempMovieData] = useState([])
-    const [watched, setWatched] = useState([])
+
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [error, setError] = useState('')
     const [query, setQuery] = useState('')
     const [selectedId, setSelectedId] = useState(null)
 
+    // const [watched, setWatched] = useState([])
+    const [watched, setWatched] = useState(()=>{
+        const storedValue = localStorage.getItem('watched')
+        return JSON.parse(storedValue)
+    })
     const handleMovieSelect = (id) => {
         setSelectedId(id === selectedId ? null : id)
     }
@@ -33,6 +38,9 @@ function App() {
 
     const handleAddWadchedMovie = (movie) => {
         setWatched(watched => [...watched, movie])
+
+        // localStorage.setItem('watched',JSON.stringify([...watched,module]))
+
     }
 
     const handleDeletteWatchedMovie = (id) => {
@@ -102,6 +110,11 @@ function App() {
             document.removeEventListener('keydown', callBack)
         }
     }, [])
+
+
+    useEffect(() => {
+        localStorage.setItem('watched',JSON.stringify(watched))
+    }, [watched]);
 
 
     return (
