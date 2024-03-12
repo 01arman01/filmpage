@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import s from './MovieDetails.module.css'
 import {key} from './../../data'
 import StarRating from "../StarRating/StarRating";
@@ -12,6 +12,7 @@ function MovieDetails({
     const [movie, setMovie] = useState({})
     const [newUserRating, setNewUserRating] = useState(undefined)
 
+    const countRef = useRef(0)
 
 
     const watchedStatus = watched.map(item=>item.imdbID).includes(selectedId)
@@ -62,9 +63,6 @@ function MovieDetails({
             userRating: newUserRating,
         })
         onCloseSelectedMove()
-
-
-
     }
     return (
         <div>
