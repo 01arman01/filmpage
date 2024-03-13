@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 const key = '3fb280c7'
-export function  useMoves(query,callBack){
+export function  useMoves(query){
     const [isLoaded, setIsLoaded] = useState(false)
     const [error, setError] = useState('')
     const [tempMovieData, setTempMovieData] = useState([])
@@ -11,7 +11,7 @@ export function  useMoves(query,callBack){
 
 
             async function fetchMovies() {
-                callBack?.()
+                // callBack?.()
                 try {
                     setIsLoaded(true)
                     setError('')

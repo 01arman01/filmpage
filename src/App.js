@@ -12,6 +12,7 @@ import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 import {useMoves} from "./castumHooks/useMoves";
+import {useLocalStorige} from "./castumHooks/useLocalStorigState";
 
 const key = '3fb280c7'
 
@@ -24,14 +25,17 @@ function App() {
 
     const [query, setQuery] = useState('')
     const [selectedId, setSelectedId] = useState(null)
-    const {tempMovieData,isLoaded,error} = useMoves(query,handleCloseMove)
+    const {tempMovieData,isLoaded,error} = useMoves(query)
+
+  const  [watched,setWatched] = useLocalStorige([],'watched')
+
 
 
     // const [watched, setWatched] = useState([])
-    const [watched, setWatched] = useState(()=>{
-        const storedValue = localStorage.getItem('watched')
-        return JSON.parse(storedValue)
-    })
+    // const [watched, setWatched] = useState(()=>{
+    //     const storedValue = localStorage.getItem('watched')
+    //     return JSON.parse(storedValue)
+    // })
     const handleMovieSelect = (id) => {
         setSelectedId(id === selectedId ? null : id)
     }
@@ -114,9 +118,9 @@ function App() {
     }, [])
 
 
-    useEffect(() => {
-        localStorage.setItem('watched',JSON.stringify(watched))
-    }, [watched]);
+    // useEffect(() => {
+    //     localStorage.setItem('watched',JSON.stringify(watched))
+    // }, [watched]);
 
 
     return (
