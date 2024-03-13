@@ -1,6 +1,7 @@
 // import React, {useState} from 'react';
 import s from "./Header.module.css";
 import {useEffect, useRef} from "react";
+import {useKey} from "../../castumHooks/useKey";
 
 function Search({query, setQuery}) {
     // const [SearchValue, setSearchValue] = useState('')
@@ -12,21 +13,25 @@ function Search({query, setQuery}) {
     //     console.log(el)
     // },[query])
     // console.log(s.search)
-
-    useEffect(() => {
-        const callback = (e) => {
-            console.log(document.activeElement)
-            if(document.activeElement === inputEL.current) return
-
-            if (e.code === "Enter") {
-                inputEL.current.focus()
-                setQuery('')
-            }
-        }
-        document.addEventListener('keydown', callback)
-        // return () => document.addEventListener('keydown', callback)
-
-    }, [setQuery]);
+    useKey('Enter',  ()=> {
+        if(document.activeElement === inputEL.current) return
+        console.log(inputEL)
+        inputEL.current.focus()
+        setQuery('')
+    })
+    // useEffect(() => {
+    //     const callback = (e) => {
+    //         // console.log(document.activeElement)
+    //         if(document.activeElement === inputEL.current) return
+    //         document.addEventListener('keydown', callback)
+    //         if (e.code === "Enter") {
+    //
+    //         }
+    //     }
+    //
+    //     // return () => document.addEventListener('keydown', callback)
+    //
+    // }, [setQuery]);
 
     return (
         <div><input type='text'

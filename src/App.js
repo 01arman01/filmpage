@@ -13,6 +13,7 @@ import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 import {useMoves} from "./castumHooks/useMoves";
 import {useLocalStorige} from "./castumHooks/useLocalStorigState";
+import {useKey} from "./castumHooks/useKey";
 
 const key = '3fb280c7'
 
@@ -103,19 +104,22 @@ function App() {
     //     }, [query]
     // )
 
-    useEffect(function () {
-        function callBack(e) {
-            if (e.code === "Escape") {
-                handleCloseMove()
-            }
-        }
 
-        document.addEventListener("keydown", callBack)
 
-        return function () {
-            document.removeEventListener('keydown', callBack)
-        }
-    }, [])
+    useKey('Escape', handleCloseMove)
+    // useEffect(function () {
+    //     function callBack(e) {
+    //         if (e.code === "Escape") {
+    //             handleCloseMove()
+    //         }
+    //     }
+    //
+    //     document.addEventListener("keydown", callBack)
+    //
+    //     return function () {
+    //         document.removeEventListener('keydown', callBack)
+    //     }
+    // }, [])
 
 
     // useEffect(() => {
